@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.leo.helpdesk.domain.enums.Perfil;
 
@@ -19,7 +18,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public abstract class Pessoa implements Serializable{
+public abstract class Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -96,7 +95,7 @@ public abstract class Pessoa implements Serializable{
     }
 
     public Set<Perfil> getPerfis() {
-        return perfis.stream().map(x -> Perfil.ToEnum(x)).collect(Collectors.toSet());
+        return perfis.stream().map(Perfil::toEnum).collect(Collectors.toSet());
     }
 
     public void addPerfil(Perfil perfil) {

@@ -19,7 +19,7 @@ public enum Perfil {
         return descricao;
     }
 
-    public static Perfil ToEnum(Integer cod) {
+    public static Perfil toEnum(Integer cod) {
         if (cod == null) {
             return null;
         }
