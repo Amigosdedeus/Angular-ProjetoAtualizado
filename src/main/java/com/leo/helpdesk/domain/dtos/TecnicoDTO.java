@@ -24,6 +24,7 @@ public class TecnicoDTO implements Serializable {
 
     public TecnicoDTO() {
         super();
+        addPerfis(Perfil.CLIENTE);
     }
 
     public TecnicoDTO(Tecnico obj) {
@@ -37,6 +38,7 @@ public class TecnicoDTO implements Serializable {
             .map(Perfil::getCodigo) // Usando method reference para melhorar a legibilidade
             .collect(Collectors.toSet());
         this.dataCriacao = obj.getDataCriacao();
+        addPerfis(Perfil.CLIENTE);
     }
 
     public Integer getId() {
