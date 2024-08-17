@@ -53,7 +53,7 @@ public class TecnicoService{
 
       }
 
-      public void delete(Integer id) {
+         public void delete(Integer id) {
          Tecnico obj = findById(id);
 
          if(obj.getChamados().size() > 0){
@@ -62,7 +62,7 @@ public class TecnicoService{
             repository.deleteById(id);
          }
       
-      private void validaPorCpfEEmail(TecnicoDTO objDTO) {
+        private void validaPorCpfEEmail(TecnicoDTO objDTO) {
          Optional<Pessoa> obj = pessoaRepository.findByCpf(objDTO.getCpf());
          if(obj.isPresent() && obj.get().getId() != objDTO.getId()){
               throw new DataIntegrityViolationException("CPF já cadastrado no sistema!");

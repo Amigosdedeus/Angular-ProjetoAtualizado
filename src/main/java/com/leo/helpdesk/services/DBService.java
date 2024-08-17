@@ -38,6 +38,7 @@ public class DBService {
 		
 		Tecnico tec4 = new Tecnico(null, "Josue Martins", "14952337131", "josue@mail.com", "452");
 		tec3.addPerfil(Perfil.ADMIN);
+		
 
 		Cliente cli1 = new Cliente(null, "Mateus Lima", "80527954780", "torvalds@mail.com", "123");
 
