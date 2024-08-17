@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.leo.helpdesk.domain.enums.Perfil;
 
@@ -25,9 +26,9 @@ public abstract class Pessoa implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
     protected String nome;
-
+    
     @Column(unique = true)
-    protected String cpf;
+	protected String cpf;
 
     @Column(unique = true)
     protected String email;

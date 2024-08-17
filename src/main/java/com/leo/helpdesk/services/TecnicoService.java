@@ -13,6 +13,8 @@ import com.leo.helpdesk.repositories.TecnicoRepository;
 import java.util.List;
 import com.leo.helpdesk.services.exceptions.DataIntegrityViolationException;
 
+import jakarta.validation.Valid;
+
 @Service
 public class TecnicoService{
     
@@ -30,15 +32,27 @@ public class TecnicoService{
         }
 
         public List<Tecnico> findAll() {
-           return repository.findAll();
+         return repository.findAll();
         }
 
-        public Tecnico create(TecnicoDTO objDTO) {
-            objDTO.setId(null);
-           validaPorCpfEEmail(objDTO);
-           Tecnico newObj = new Tecnico(objDTO);
-           return repository.save(newObj);
+
+        public Tecnico create(TecnicoDTO objDTO)  {
+         objDTO.setId(null);
+         Tecnico newObj = new Tecnico(objDTO);
+         return repository.save(newObj);
         }
+
+
+      
+	     public Tecnico update(Integer id, @Valid TecnicoDTO objDTO) {
+         objDTO.setId(id);
+         Tecnico oldObj = findById(id);
+		   validaPorCpfEEmail(objDTO);
+         oldObj = new Tecnico(objDTO);
+         return repository.save(oldObj);
+
+      }
+  
 
       private void validaPorCpfEEmail(TecnicoDTO objDTO) {
          Optional<Pessoa> obj = pessoaRepository.findByCpf(objDTO.getCpf());
@@ -50,5 +64,8 @@ public class TecnicoService{
          if(obj.isPresent() && obj.get().getId() != objDTO.getId()){
             throw new DataIntegrityViolationException("E-mail já cadastrado no sistema!");
        }
+      
       }
-}
+
+   }
+  
